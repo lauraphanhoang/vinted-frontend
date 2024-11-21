@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <header>
       <div className="container">
@@ -15,8 +17,8 @@ const Header = () => {
 
         <nav>
           <div className="login">
-            <button>S'inscrire</button>
-            <button>Se connecter</button>
+            <button onClick={() => navigate("/signup")}>S'inscrire</button>
+            <button onClick={() => navigate("/login")}>Se connecter</button>
           </div>
           <div className="sell">
             <button>Vends tes articles</button>

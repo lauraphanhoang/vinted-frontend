@@ -31,7 +31,7 @@ const Home = () => {
       <div className="banniere">
         <div className="container">
           <div className="homepage">
-            <h1>Prêts à faire du tri dans vos placards ?</h1>
+            <p>Prêts à faire du tri dans vos placards ?</p>
             <button> Commencer à vendre</button>
           </div>
         </div>

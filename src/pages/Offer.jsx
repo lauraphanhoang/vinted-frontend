@@ -29,7 +29,7 @@ const Offer = () => {
   return isLoading === true ? (
     <p>Loading...</p>
   ) : (
-    <div className=".article">
+    <div className="container">
       {/* <h2>Offer</h2>
       <p>{data.product_name}</p> */}
 
