@@ -176,12 +176,14 @@ button {
 
 /* OFFER  */
 
-.container-offer {
+.article {
   display: flex;
   width: 1200px;
   margin: 20px auto;
   justify-content: space-between;
+  border: black 1px solid;
 }
+
 .description {
   width: 400px;
   height: 500px;

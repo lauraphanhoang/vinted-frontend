@@ -1,23 +1,50 @@
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 const Offer = () => {
-  return (
-    <>
-      {/* <div className="container-offer">
-        {data.offers.map((offer) => {
-          return (
-            <div key={offer.id}>
-              <img src={offer.product_pictures[0].url} alt="picture" />
-              <div className="description">
-                <p>{offer.product_price}</p>
-                <p>{offer.product_details[0].MARQUE}</p>
-                <p>{offer.product_details[1].TAILLE}</p>
-                <p>{offer.product_details[2].ÉTAT}</p>
-                <p>{offer.product_details[3].EMPLACEMENT}</p>
-              </div>
-            </div>
-          );
-        })}
-      </div> */}
-    </>
+  const { id } = useParams();
+
+  const [data, setData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://lereacteur-vinted-api.herokuapp.com/v2/offers/${id}`
+        );
+        // console.log(response.data);
+
+        setData(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, [id]);
+
+  return isLoading === true ? (
+    <p>Loading...</p>
+  ) : (
+    <div className=".article">
+      {/* <h2>Offer</h2>
+      <p>{data.product_name}</p> */}
+
+      {data.product_details.map((detail, index) => {
+        const keysInObj = Object.keys(detail);
+
+        const keyInObj = keysInObj[0];
+
+        return (
+          <p key={index}>
+            {keyInObj} : {detail[keyInObj]}
+          </p>
+        );
+      })}
+    </div>
   );
 };
 export default Offer;

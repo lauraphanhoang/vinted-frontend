@@ -1,6 +1,32 @@
-const Home = ({ data }) => {
-  // console.log(data.offers);
-  return (
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+const Home = () => {
+  const [data, setData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://lereacteur-vinted-api.herokuapp.com/v2/offers"
+        );
+        // console.log(response.data);
+
+        setData(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return isLoading === true ? (
+    <p>Loading...</p>
+  ) : (
     <>
       <div className="banniere">
         <div className="container">
@@ -11,18 +37,25 @@ const Home = ({ data }) => {
         </div>
       </div>
       <div className="container-offerslist">
-        {data.offers.map((offer, index) => {
+        {data.offers.map((offer) => {
           return (
-            <div className="product" key={index}>
-              <div className="owner">
-                {/* <img src={offer.owner.account.avatar.url} alt="avatar" /> */}
-                <h3>{offer.owner.account.username}</h3>
+            <Link to={`/offers/${offer._id}`} key={offer._id}>
+              <div className="product">
+                <div className="owner">
+                  {offer.owner.account.avatar && (
+                    <img
+                      src={offer.owner.account.avatar.secure_url}
+                      alt="avatar"
+                    />
+                  )}
+                  <span>{offer.owner.account.username}</span>
+                </div>
+                <img src={offer.product_pictures[0].url} alt="picture" />
+                <p className="price">{offer.product_price.toFixed(2)} €</p>
+                <p>{offer.product_details[1].TAILLE}</p>
+                <p>{offer.product_details[0].MARQUE}</p>
               </div>
-              <img src={offer.product_pictures[0].url} alt="picture" />
-              <p className="price">{offer.product_price} €</p>
-              <p>{offer.product_details[1].TAILLE}</p>
-              <p>{offer.product_details[0].MARQUE}</p>
-            </div>
+            </Link>
           );
         })}
       </div>
