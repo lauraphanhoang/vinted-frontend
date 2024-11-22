@@ -29,22 +29,40 @@ const Offer = () => {
   return isLoading === true ? (
     <p>Loading...</p>
   ) : (
-    <div className="container">
-      {/* <h2>Offer</h2>
-      <p>{data.product_name}</p> */}
+    <main>
+      <div className="container-offer">
+        <div className="image-offer">
+          <img src={data.product_pictures[0].secure_url} alt="image" />
+        </div>
 
-      {data.product_details.map((detail, index) => {
-        const keysInObj = Object.keys(detail);
+        <div className="description">
+          <p>{data.product_price} €</p>
+          {data.product_details.map((detail, index) => {
+            const keysInObj = Object.keys(detail);
 
-        const keyInObj = keysInObj[0];
+            const keyInObj = keysInObj[0];
 
-        return (
-          <p key={index}>
-            {keyInObj} : {detail[keyInObj]}
-          </p>
-        );
-      })}
-    </div>
+            return (
+              <>
+                <p key={index} className="details">
+                  <span className="keyInObj">{keyInObj}</span> :{" "}
+                  <span className="keyInObj-detail">{detail[keyInObj]}</span>
+                </p>
+              </>
+            );
+          })}
+          <div className="separator"></div>
+          <p className="name">{data.product_name}</p>
+          <div className="owner">
+            {data.owner.account.avatar && (
+              <img src={data.owner.account.avatar.secure_url} alt="avatar" />
+            )}
+            <span>{data.owner.account.username}</span>
+          </div>
+          <button className="buy">Acheter</button>
+        </div>
+      </div>
+    </main>
   );
 };
 export default Offer;

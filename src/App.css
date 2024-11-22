@@ -178,21 +178,68 @@ button {
 
 /* OFFER  */
 
-.article {
+main {
+  background-color: #eaedee;
+}
+.container-offer {
   display: flex;
-  width: 1200px;
-  margin: 20px auto;
-  justify-content: space-between;
-  border: black 1px solid;
-}
-
-.description {
-  width: 400px;
+  width: 900px;
   height: 500px;
-  background-color: white;
-  padding: 30px;
+  margin: 20px auto;
+  padding: 40px 0px;
+  justify-content: space-between;
+  /* border: black 1px solid; */
+  gap: 10px;
+}
+.image-offer {
+  display: flex;
+  width: 400px;
+  /* border: black 1px solid; */
+  align-items: center;
 }
 
+.image-offer img {
+  object-fit: cover;
+  width: 100%;
+  height: 500px;
+  display: flex;
+}
+.description {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 30px;
+  background-color: white;
+  line-height: 30px;
+  font-size: 15px;
+}
+.details {
+  color: grey;
+  font-size: 12px;
+}
+.separator {
+  width: 300px;
+  margin: 20px auto;
+  border: solid 1px rgb(238, 234, 234);
+}
+.buy {
+  background-color: #2cb1ba;
+  color: white;
+  padding: 10px 20px;
+  font-size: 15px;
+  margin-top: 40px;
+}
+.name {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.keyInObj-detail {
+  font-weight: 500;
+  font-size: 11px;
+  color: black;
+}
+/* SIGNUP */
 .container-form {
   display: flex;
   flex-direction: column;
