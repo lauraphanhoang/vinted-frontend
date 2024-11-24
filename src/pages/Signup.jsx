@@ -1,61 +1,91 @@
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-const Signup = () => {
+import axios from "axios";
+// import Cookies from "js-cookie";
+
+const Signup = ({ handleConnexionStatus }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [newsletter, setNewsletter] = useState(false);
 
-  const handleSubmit = (event) => {
+  // const [token, setToken] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleSignup = async (event) => {
     event.preventDefault();
-    console.log(event);
+    // console.log(event);
+
+    try {
+      const response = await axios.post(
+        "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+        {
+          email: email,
+          username: username,
+          password: password,
+          newsletter: newsletter,
+        }
+      );
+      console.log(response.data);
+      handleConnexionStatus(response.data.token);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <>
       <div className="container-form">
         <h1>S'inscrire</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSignup}>
           <input
             type="text"
             placeholder="Nom d'utilisateur"
-            name="username"
+            value={username}
             onChange={(event) => {
               setUsername(event.target.value);
             }}
-            value={username}
           />
           <input
             type="email"
             placeholder="Email"
-            name="email"
+            value={email}
             onChange={(event) => {
               setEmail(event.target.value);
             }}
-            value={email}
           />
           <input
             type="password"
             placeholder="Mot de passe"
-            name="password"
+            value={password}
             onChange={(event) => {
               setPassword(event.target.value);
             }}
-            value={password}
           />
-        </form>
-        <div>
-          <input type="checkbox"></input>
-          <span>S'inscrire à notre newsletter</span>
-
+          <div>
+            <input
+              type="checkbox"
+              checked={newsletter} // quand c'est coché on s'inscrit à la newsletter
+              onChange={() => {
+                setNewsletter(!newsletter);
+              }}
+            ></input>
+            <span>S'inscrire à notre newsletter</span>
+          </div>
           <p>
-            En m'inscrivant je confirme avoir lu et accepré les Termes &
+            En m'inscrivant je confirme avoir lu et accepté les Termes &
             Conditions et Politique de Confidentialité de Vinted. Je confirme
-            avoir moins de 18ans.
+            avoir au moins 18ans.
           </p>
           <button className="button-signup">S'inscrire</button>
+        </form>
+        <div>
           <div className="link">
-            <a href="http://localhost:5173/signup">
-              Pas encore de compte? Inscris-toi !
-            </a>
+            <Link className="a" to="/login">
+              Déjà un compte ? Connecte-toi !{" "}
+            </Link>
           </div>
         </div>
       </div>

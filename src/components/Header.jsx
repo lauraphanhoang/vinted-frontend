@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ token, handleConnexionStatus }) => {
   const navigate = useNavigate();
+
   return (
     <header>
       <div className="container">
@@ -13,14 +13,38 @@ const Header = () => {
           />
         </Link>
 
-        <input type="text" placeholder="Rechercher des articles ? "></input>
+        <div className="search">
+          <input type="text" placeholder="Rechercher des articles ? "></input>
+          <div className="filters">
+            <span>Trier par prix : </span>
+            <div className="switch">
+              <input type="checkbox" id="checkbox" />
+              <div className="slider round"></div>
+            </div>
+            <span>Prix entre : </span>
+          </div>
+        </div>
 
         <nav>
           <div className="login">
-            <button onClick={() => navigate("/signup")}>S'inscrire</button>
-            <button onClick={() => navigate("/login")}>Se connecter</button>
+            {token ? (
+              <button
+                className="deconnexion"
+                onClick={() => {
+                  handleConnexionStatus(null);
+                  navigate("/");
+                }}
+              >
+                Déconnexion
+              </button>
+            ) : (
+              <>
+                <button onClick={() => navigate("/signup")}>S'inscrire</button>
+                <button onClick={() => navigate("/login")}>Se connecter</button>
+              </>
+            )}
           </div>
-          <div className="sell">
+          <div className="selling">
             <button>Vends tes articles</button>
           </div>
         </nav>
