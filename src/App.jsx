@@ -15,6 +15,7 @@ import Footer from "./components/Footer";
 
 function App() {
   const [token, setToken] = useState(Cookies.get("vinted-token") || null);
+  const [title, setTitle] = useState("");
 
   const handleConnexionStatus = (token) => {
     if (token === null) {
@@ -28,9 +29,17 @@ function App() {
   return (
     <>
       <Router>
-        <Header token={token} handleConnexionStatus={handleConnexionStatus} />
+        <Header
+          token={token}
+          handleConnexionStatus={handleConnexionStatus}
+          title={title}
+          setTitle={setTitle}
+        />
         <Routes>
-          <Route path="/" element={<Home />}></Route>
+          <Route
+            path="/"
+            element={<Home title={title} setTitle={setTitle} />}
+          ></Route>
           <Route path="/offers/:id" element={<Offer />}></Route>
           <Route
             path="/signup"

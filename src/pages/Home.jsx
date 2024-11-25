@@ -2,15 +2,20 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const Home = () => {
+const Home = ({ title }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        let filters = "";
+        if (title) {
+          filters += "?title=" + title;
+        }
+
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/v2/offers"
+          "https://lereacteur-vinted-api.herokuapp.com/v2/offers" + filters
         );
         // console.log(response.data);
 
@@ -22,7 +27,7 @@ const Home = () => {
     };
 
     fetchData();
-  }, []);
+  }, [title]);
 
   return isLoading === true ? (
     <p>Loading...</p>

@@ -1,12 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 
-const Header = ({ token, handleConnexionStatus }) => {
+const Header = ({ token, handleConnexionStatus, title, setTitle }) => {
   const navigate = useNavigate();
 
   return (
     <header>
       <div className="container">
-        <Link target="_blank" to="/">
+        <Link to="/">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Vinted_logo.png/1200px-Vinted_logo.png"
             alt="logo vinted "
@@ -14,7 +14,14 @@ const Header = ({ token, handleConnexionStatus }) => {
         </Link>
 
         <div className="search">
-          <input type="text" placeholder="Rechercher des articles ? "></input>
+          <input
+            type="text"
+            placeholder="Rechercher des articles ? "
+            value={title}
+            onChange={(event) => {
+              setTitle(event.target.value);
+            }}
+          ></input>
           <div className="filters">
             <span>Trier par prix : </span>
             <div className="switch">
