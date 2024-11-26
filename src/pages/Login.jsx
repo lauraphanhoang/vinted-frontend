@@ -21,7 +21,11 @@ const Login = ({ handleConnexionStatus }) => {
       );
       // console.log(response.data);
       handleConnexionStatus(response.data.token);
-      navigate("/");
+      if (location.useState) {
+        navigate(location.state.from);
+      } else {
+        navigate("/");
+      }
     } catch (error) {
       console.log(error);
     }

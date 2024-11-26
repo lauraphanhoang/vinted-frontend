@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
 const Home = ({ title }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,7 +38,10 @@ const Home = ({ title }) => {
         <div className="container">
           <div className="homepage">
             <p>Prêts à faire du tri dans vos placards ?</p>
-            <button> Commencer à vendre</button>
+            <button onClick={() => navigate("/publish")}>
+              {" "}
+              Commencer à vendre
+            </button>
           </div>
         </div>
       </div>

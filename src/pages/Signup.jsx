@@ -64,14 +64,14 @@ const Signup = ({ handleConnexionStatus }) => {
               setPassword(event.target.value);
             }}
           />
-          <div>
+          <div className="checkbox">
             <input
               type="checkbox"
               checked={newsletter} // quand c'est coché on s'inscrit à la newsletter
               onChange={() => {
                 setNewsletter(!newsletter);
               }}
-            ></input>
+            />
             <span>S'inscrire à notre newsletter</span>
           </div>
           <p>

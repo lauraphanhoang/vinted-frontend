@@ -8,6 +8,8 @@ import Home from "./pages/Home";
 import Offer from "./pages/Offer";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import Publish from "./pages/Publish";
+import Payment from "./pages/Payment";
 
 //Components
 import Header from "./components/Header";
@@ -40,7 +42,7 @@ function App() {
             path="/"
             element={<Home title={title} setTitle={setTitle} />}
           ></Route>
-          <Route path="/offers/:id" element={<Offer />}></Route>
+          <Route path="/offers/:id" element={<Offer token={token} />}></Route>
           <Route
             path="/signup"
             element={<Signup handleConnexionStatus={handleConnexionStatus} />}
@@ -49,6 +51,8 @@ function App() {
             path="/login"
             element={<Login handleConnexionStatus={handleConnexionStatus} />}
           ></Route>
+          <Route path="/publish" element={<Publish token={token} />}></Route>
+          <Route path="/payment" element={<Payment />}></Route>
         </Routes>
         <Footer />
       </Router>

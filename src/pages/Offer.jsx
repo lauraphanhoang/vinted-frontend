@@ -1,12 +1,14 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const Offer = () => {
+const Offer = (token) => {
   const { id } = useParams();
 
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,13 +55,28 @@ const Offer = () => {
           })}
           <div className="separator"></div>
           <p className="name">{data.product_name}</p>
+          <p className="product-description">{data.product_description}</p>
           <div className="owner">
             {data.owner.account.avatar && (
               <img src={data.owner.account.avatar.secure_url} alt="avatar" />
             )}
-            <span>{data.owner.account.username}</span>
+            <p>{data.owner.account.username}</p>
           </div>
-          <button className="buy">Acheter</button>
+          <button
+            className="buy"
+            onClick={() =>
+              token
+                ? navigate("/payment", {
+                    state: {
+                      title: data.product_name,
+                      price: data.product_price,
+                    },
+                  })
+                : navigate("/login")
+            }
+          >
+            Acheter
+          </button>
         </div>
       </div>
     </main>

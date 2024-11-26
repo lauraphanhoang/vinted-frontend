@@ -2,9 +2,9 @@ const Footer = () => {
   return (
     <footer>
       <span>
-        Made at
+        Made at{" "}
         <a href="https://www.lereacteur.io/" target="_blank">
-          Le Reacteur
+          Le Reacteur{" "}
         </a>
         by Laura Phan-Hoang - 2024
       </span>

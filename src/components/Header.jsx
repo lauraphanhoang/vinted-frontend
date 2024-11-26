@@ -16,20 +16,12 @@ const Header = ({ token, handleConnexionStatus, title, setTitle }) => {
         <div className="search">
           <input
             type="text"
-            placeholder="Rechercher des articles ? "
+            placeholder="Rechercher des articles ?"
             value={title}
             onChange={(event) => {
               setTitle(event.target.value);
             }}
           ></input>
-          <div className="filters">
-            <span>Trier par prix : </span>
-            <div className="switch">
-              <input type="checkbox" id="checkbox" />
-              <div className="slider round"></div>
-            </div>
-            <span>Prix entre : </span>
-          </div>
         </div>
 
         <nav>
@@ -52,7 +44,9 @@ const Header = ({ token, handleConnexionStatus, title, setTitle }) => {
             )}
           </div>
           <div className="selling">
-            <button>Vends tes articles</button>
+            <button onClick={() => navigate("/publish")}>
+              Vends tes articles
+            </button>
           </div>
         </nav>
       </div>
