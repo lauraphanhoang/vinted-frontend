@@ -24,11 +24,17 @@ const Payment = () => {
         <div className="cart">
           <h3>Résumé de la commande</h3>
           <div className="payment-details">
-            <p>
-              Commande : {title} {price} €{" "}
-            </p>
-            <p>Frais protection acheteurs : 0.40 €</p>
-            <p>Frais de port : 0.80€</p>
+            <div>
+              <p>
+                Commande : {title} {price} €{" "}
+              </p>
+            </div>
+            <div>
+              <p>Frais protection acheteurs : 0.40 €</p>
+            </div>
+            <div>
+              <p>Frais de port : 0.80€</p>
+            </div>
           </div>
           <div className="cart-total">
             <p className="total">Total : {price + 0.8 + 0.4} €</p>

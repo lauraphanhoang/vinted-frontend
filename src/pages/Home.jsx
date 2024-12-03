@@ -16,7 +16,7 @@ const Home = ({ title }) => {
         }
 
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/v2/offers" + filters
+          `${import.meta.env.VITE_API_URL}/v2/offers` + filters
         );
         // console.log(response.data);
 

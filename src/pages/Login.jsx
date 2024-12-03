@@ -16,7 +16,7 @@ const Login = ({ handleConnexionStatus }) => {
     // console.log(event);
     try {
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/login",
+        `${import.meta.env.VITE_API_URL}/user/login`,
         { email: email, password: password }
       );
       // console.log(response.data);
