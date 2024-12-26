@@ -59,7 +59,11 @@ const Home = ({ title }) => {
                   )}
                   <span>{offer.owner.account.username}</span>
                 </div>
-                <img src={offer.product_pictures[0].url} alt="picture" />
+                <img
+                  className="pic"
+                  src={offer.product_pictures[0].url}
+                  alt="picture"
+                />
                 <p className="price">{offer.product_price.toFixed(2)} €</p>
                 <p>{offer.product_details[1].TAILLE}</p>
                 <p>{offer.product_details[0].MARQUE}</p>

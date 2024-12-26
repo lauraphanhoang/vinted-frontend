@@ -449,4 +449,61 @@ footer a {
   .search input {
     width: 300px;
   }
+  @media (max-width: 420px) {
+    header .container {
+      display: block;
+      margin: 10px;
+    }
+    header nav {
+      /* background-color: green; */
+      justify-content: flex-start;
+      gap: 10px;
+      width: 100%;
+      margin: 10px 0;
+    }
+    .container {
+      margin: 5px;
+    }
+    .container-offerslist {
+      /* background-color: pink; */
+      justify-content: center;
+      margin: 10px;
+    }
+    .product {
+      /* background-color: red; */
+      width: 150px;
+    }
+    .product img {
+      width: 130px;
+      height: 220px;
+    }
+    .owner img {
+      width: 20px;
+      height: 20px;
+    }
+    main {
+      padding: 0px;
+      width: 100%;
+    }
+    .publish-container {
+      padding: 5px;
+      /* background-color: pink; */
+      width: 100%;
+    }
+    .publish-form {
+      /* background-color: green; */
+      width: 100%;
+    }
+    .container-image {
+      width: 100%;
+      height: 100px;
+    }
+    .container-1 {
+      width: 100%;
+      /* background-color: orange; */
+    }
+    input {
+      margin: 0 10px;
+    }
+  }
 }
