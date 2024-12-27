@@ -449,7 +449,7 @@ footer a {
   .search input {
     width: 300px;
   }
-  @media (max-width: 420px) {
+  @media (max-width: 450px) {
     header .container {
       display: block;
       margin: 10px;
@@ -487,11 +487,9 @@ footer a {
     }
     .publish-container {
       padding: 5px;
-      /* background-color: pink; */
       width: 100%;
     }
     .publish-form {
-      /* background-color: green; */
       width: 100%;
     }
     .container-image {
@@ -500,7 +498,6 @@ footer a {
     }
     .container-1 {
       width: 100%;
-      /* background-color: orange; */
     }
     .container-1 input {
       margin: 0 10px;
